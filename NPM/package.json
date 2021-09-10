@@ -1,0 +1,19 @@
+{
+  "name": "npm",
+  "version": "0.0.0",
+  "description": "Dejar los dias enteros",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "d3-array": "^2.12.1",
+    "d3-time": "^2.1.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "steward",
+  "license": "ISC"
+}
