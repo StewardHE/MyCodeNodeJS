@@ -3,6 +3,7 @@ const mongosee = require('mongoose')
 const bcrypt = require('bcrypt')
 const express = require('express')
 const User = require('../models/user')
+
 const router = express.Router()
 const { check, validationResult } = require('express-validator');
 
@@ -44,7 +45,8 @@ router.post('/', [
         name: req.body.name,
         email: req.body.email,
         password: hashPassword,
-        isCustomer: false
+        isCustomer: false,
+        isAdmin: false
     })
 
     // method for save the user 

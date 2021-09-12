@@ -6,9 +6,10 @@ const User = require('../models/user')
 const router = express.Router() 
 const mongoose = require('mongoose')
 const auth = require('../middleware/auth') 
+const admin = require('../middleware/admin')
 
-// Route home with the method GET 
-router.get('/', async(req, res)=>{
+// Route of sales 
+router.get('/', [auth, admin], async(req, res)=>{ 
     const sales = await Sale.find()
     res.send(sales)
 })
