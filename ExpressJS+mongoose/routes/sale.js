@@ -3,8 +3,9 @@ const express = require('express')
 const Sale = require('../models/sale')
 const Car = require('../models/car')
 const User = require('../models/user')
-const router = express.Router() // desviar desde la ruta / a este archivo
+const router = express.Router() 
 const mongoose = require('mongoose')
+const auth = require('../middleware/auth') 
 
 // Route home with the method GET 
 router.get('/', async(req, res)=>{
@@ -13,7 +14,7 @@ router.get('/', async(req, res)=>{
 })
 
 // Route home with the method POST
-router.post('/', async(req, res)=>{
+router.post('/', auth, async(req, res)=>{
     const user = await User.findById(req.body.userId)
     // check if the requested user exist in database 
     if (!user) return res.status(400).send('that user does not exist in database')
