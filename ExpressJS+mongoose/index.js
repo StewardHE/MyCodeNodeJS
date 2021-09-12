@@ -6,6 +6,7 @@ const express = require('express') // load express
 const app = express() // app require express dependencie
 
 const PORT = process.env.PORT || 3003 // here, defined the port 
+console.log(process.env.SECRET_KEY_JWT_CAR_API)
 
 // add files 
 const car = require("./routes/cars") // load the file of routes
