@@ -4,6 +4,10 @@ const express = require('express') // load express
 const Car = require('../models/car') // load the export module car
 const {Company} = require('../models/company')
 
+const Role = require('../helpers/role')
+const authorize = require('../middleware/role')
+const auth = require('../middleware/auth')
+
 const router = express.Router() // desviar desde la ruta / a este archivo
 const { body, validationResult, check } = require('express-validator'); // api requires express validator 
 
@@ -17,7 +21,7 @@ router.get('/list',async(req, res)=> { // rute using the get method
 })
 
  // ruta home 
-router.get('/', async(req, res)=>{ // rute with method get
+router.get('/', [auth, authorize([Role.Admin, Role.User])], async(req, res)=>{ // authoriza cuales usuarios pueden ver los autos
     const cars = await Car
         .find() // find in database and return the requested car 
         .populate('company', 'name country') // shows to the user the company of cars instead of the id
